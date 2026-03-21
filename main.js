@@ -1,12 +1,15 @@
 const urlBase = "http://ourcontactmanager.rocks/API";
 const guessBar = document.getElementById("guessBar");
+const imageHolder = document.getElementById("imageHolder");
+const heartText = document.getElementById("heartText");
 
 let answer = "VOCAL";
 
 guessBar.addEventListener("keydown", onEnterPress);
 
 function sendGuess() {
-  if (guessBar.value === answer) {
+  var guess = guessBar.value.toUpperCase();
+  if (guess === answer) {
     correctAnswer();
   }
   else {
@@ -15,9 +18,11 @@ function sendGuess() {
 }
 
 function correctAnswer() {
-  guessBar.classList.remove("flashClass");
+  guessBar.classList.remove("rightFlash");
   guessBar.offsetWidth; // trigger reflow so animation plays again
-  guessBar.classList.add("flashClass");
+  guessBar.classList.add("rightFlash");
+  imageHolder.classList.add("imageHolder");
+  showHearts();
 }
 
 function wrongAnswer() {
@@ -33,4 +38,26 @@ function onEnterPress(event) {
     event.preventDefault();
     sendGuess();
   }
+}
+
+function showHearts() {
+  // Get random number between 2 ranges
+  function randomNum(m, n) {
+    m = parseInt(m);
+    n = parseInt(n);
+    return Math.floor(Math.random() * (n - m + 1)) + m;
+  }
+  
+  function heartAnimation() {
+    $this = heartText;
+    var heartCount = 100;
+    for (var i = 0; i< heartCount; i++) {
+      var heartSize = (randomNum(60, 120) / 10);
+      var newSpan = document.createElement('div');
+      newSpan.innerHTML = '<span class="tiny-heart" style="top: ' + randomNum(40, 80) + '%; left: ' + randomNum(0, 100) + '%; width: ' + heartSize + 'px; height: ' + heartSize + 'px ; animation-delay: -' + randomNum(0, 3) + 's; animation-duration: ' + randomNum(2, 5) + 's"></span>';
+      imageHolder.appendChild(newSpan);
+    }
+  }
+  
+  heartAnimation();
 }

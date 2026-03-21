@@ -83,9 +83,20 @@
   animation: wrongAnimation .5s ease-out, horizontal-shaking .3s;
 }
 
+.rightFlash
+{
+  animation: rightAnimation .5s ease-out;
+}
+
 @keyframes wrongAnimation {
   0%   {color:black;}
   50%  {color:red;}
+  100%  {color:black;}
+}
+
+@keyframes rightAnimation {
+  0%   {color:black;}
+  50%  {color:green;}
   100%  {color:black;}
 }
 
@@ -100,4 +111,99 @@
 #guessBar{
   margin:auto;
   font-size:60px;
+  text-transform: uppercase;
+}
+
+#imageHolder
+{
+    display: flex;
+}
+
+.imageHolder
+{
+  width: 300px;
+  height: 300px;
+  animation-name: graphic;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  font-size: 50px;
+  color: #edf2f4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer
+}
+
+@keyframes graphic {
+  0%     { background-image: url( "usHike.png" )  }
+  9%    { background-image: url( "usThirdDate.png"   )  }
+  18%   { background-image: url( "herGrabbing.png" )  }
+  27%   { background-image: url( "usLowerSprings.png" )  }
+  36%   { background-image: url( "usSternGrove.png" )  }
+  45%   { background-image: url( "usCamping.png" )  }
+  54%   { background-image: url( "usByRiver.png" )  }
+  63%   { background-image: url( "usChristmas.png" )  }
+  72%   { background-image: url( "usCats.png" )  }
+  81%   { background-image: url( "usPolaroid.png" )  }
+  90%   { background-image: url( "usMonkeyRock.png" )  }
+  100%   { background-image: url( "usHike.png" )  }
+}
+
+.effect-text {
+  font-size: 50px;
+  color: #edf2f4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer
+}
+
+.tiny-heart {
+  position: absolute;
+  opacity: 0;
+  background-color: #D90429;
+  box-shadow: 0px 0px 50px 4px transparentize(#EF233C, .3);
+  animation: animated-heart infinite ease-in;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #D90429;
+  }
+  &:before {
+    transform: translateX(-50%);
+  }
+  &:after {
+    transform: translateY(-50%)
+  }
+}
+
+@keyframes animated-heart {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(45deg)
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, -40%) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, -1000%) rotate(45deg);
+  }
+}
+
+/*Preload images*/
+body::after{
+   position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+   content:url(usHike.png) url(usThirdDate.png) url(herGrabbing.png) url(usLowerSprings.png) url(usSternGrove.png) url(usCamping.png) url(usByRiver.png) url(usChristmas.png) url(usCats.png) url(usPolaroid.png) url(usMonkeyRock.png) ;
 }
