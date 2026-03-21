@@ -1,5 +1,5 @@
-const urlBase = "http://ourcontactmanager.rocks/API";
 const guessBar = document.getElementById("guessBar");
+const submitButton = document.getElementById("submitButton");
 const imageHolder = document.getElementById("imageHolder");
 const heartText = document.getElementById("heartText");
 
@@ -8,6 +8,11 @@ let answer = "VOCAL";
 guessBar.addEventListener("keydown", onEnterPress);
 
 function sendGuess() {
+  if (imageHolder.shown)
+  {
+    return;
+  }
+
   var guess = guessBar.value.toUpperCase();
   if (guess === answer) {
     correctAnswer();
@@ -18,11 +23,19 @@ function sendGuess() {
 }
 
 function correctAnswer() {
+  imageHolder.shown = true;
   guessBar.classList.remove("rightFlash");
   guessBar.offsetWidth; // trigger reflow so animation plays again
   guessBar.classList.add("rightFlash");
-  imageHolder.classList.add("imageHolder");
-  showHearts();
+  guessBar.classList.add("fadeOut");
+  submitButton.classList.add("fadeOut");
+
+  setTimeout(() =>
+  {
+    imageHolder.classList.add("imageHolder");
+    showHearts();
+  }, 3 * 1000);
+  
 }
 
 function wrongAnswer() {
@@ -52,9 +65,10 @@ function showHearts() {
     $this = heartText;
     var heartCount = 100;
     for (var i = 0; i< heartCount; i++) {
-      var heartSize = (randomNum(60, 120) / 10);
+      var heartSize = (randomNum(120, 240) / 10);
       var newSpan = document.createElement('div');
-      newSpan.innerHTML = '<span class="tiny-heart" style="top: ' + randomNum(40, 80) + '%; left: ' + randomNum(0, 100) + '%; width: ' + heartSize + 'px; height: ' + heartSize + 'px ; animation-delay: -' + randomNum(0, 3) + 's; animation-duration: ' + randomNum(2, 5) + 's"></span>';
+      var sideToPutHeart = randomNum(0, 1) == 0 ? 'left' : 'right';
+      newSpan.innerHTML = '<span class="tiny-heart" style="top: ' + randomNum(-20, 120) + '%;' + sideToPutHeart + ': ' + randomNum(10, -30) + '%; width: ' + heartSize + 'px; height: ' + heartSize + 'px ; animation-delay: -' + randomNum(0, 3) + 's; animation-duration: ' + randomNum(2, 5) + 's"></span>';
       imageHolder.appendChild(newSpan);
     }
   }
