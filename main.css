@@ -3,7 +3,6 @@
   src: url('Myfont-Regular.woff') format('woff')
 }
 
-
 *{
   font-family: "MyFont";
 }
@@ -79,12 +78,12 @@
   background-color: white;
 }
 
-.flashClass
+.wrongFlash
 {
-  animation: flashAnimation .5s ease-out, horizontal-shaking .3s;
+  animation: wrongAnimation .5s ease-out, horizontal-shaking .3s;
 }
 
-@keyframes flashAnimation {
+@keyframes wrongAnimation {
   0%   {color:black;}
   50%  {color:red;}
   100%  {color:black;}

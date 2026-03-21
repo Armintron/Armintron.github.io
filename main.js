@@ -14,19 +14,16 @@ function sendGuess() {
   }
 }
 
-function flashButton()
-{
+function correctAnswer() {
   guessBar.classList.remove("flashClass");
   guessBar.offsetWidth; // trigger reflow so animation plays again
   guessBar.classList.add("flashClass");
 }
 
-function correctAnswer() {
-  flashButton();
-}
-
 function wrongAnswer() {
-  flashButton();
+  guessBar.classList.remove("wrongFlash");
+  guessBar.offsetWidth; // trigger reflow so animation plays again
+  guessBar.classList.add("wrongFlash");
 }
 
 function onEnterPress(event) {
