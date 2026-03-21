@@ -146,7 +146,7 @@
 {
   width: 800px;
   height: 800px;
-  animation: 60s cubic-bezier(0,1.08,0,1.12) 3s infinite both running graphic, fadeInAnimation 1s;
+  animation: 59s cubic-bezier(0,1.08,0,1.12) 3s infinite both running graphic, fadeInAnimation 1s;
   border-radius: 15px;
   background-size: contain;
   background-repeat: no-repeat;
