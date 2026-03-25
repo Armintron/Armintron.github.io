@@ -2,6 +2,58 @@ const guessBar = document.getElementById("guessBar");
 const submitButton = document.getElementById("submitButton");
 const imageHolder = document.getElementById("imageHolder");
 const heartText = document.getElementById("heartText");
+const container = document.getElementById("container");
+
+let timerPlaying = false;
+let timerSeconds = 0;
+const timertext = document.getElementById("timer-text");
+const timerButton = document.getElementById("timer-button");
+
+setInterval(function updateTimer() {
+  if (!timerPlaying)
+  {
+    return;
+  }
+
+  timerSeconds += 1;
+  
+  const secsInMin = 5;
+  if (timerSeconds == 3 * secsInMin)
+  {
+    var voiceQuip = new Audio('First.mp3');
+    voiceQuip.play();
+  }
+  else if (timerSeconds == 6 * secsInMin)
+  {
+    var voiceQuip = new Audio('Second.mp3');
+    voiceQuip.play();
+  }
+  else if (timerSeconds == 9 * secsInMin)
+  {
+    var voiceQuip = new Audio('Third.mp3');
+    voiceQuip.play();
+  }
+  else if (timerSeconds == 12 * secsInMin)
+  {
+    var voiceQuip = new Audio('Fourth.mp3');
+    voiceQuip.play();
+  }
+}, 1000); // update about every second
+
+function handleTimerButton()
+{  
+  timerPlaying = !timerPlaying;
+  if (timerPlaying)
+  {
+    container.getAnimations()[0].play();
+    timerButton.innerText = "Pause";
+  }
+  else
+  {
+    container.getAnimations()[0].pause();
+    timerButton.innerText = "Start";
+  }
+}
 
 let answer = "VOCAL";
 
@@ -29,11 +81,16 @@ function correctAnswer() {
   guessBar.classList.add("rightFlash");
   guessBar.classList.add("fadeOut");
   submitButton.classList.add("fadeOut");
+  timerButton.classList.add("fadeOut");
+  timerPlaying = false;
 
+  
   setTimeout(() =>
-  {
-    imageHolder.classList.add("imageHolder");
-    showHearts();
+    {
+      imageHolder.classList.add("imageHolder");
+      showHearts();
+      var voiceQuip = new Audio('Last.mp3');
+      voiceQuip.play();
   }, 3 * 1000);
   
 }
@@ -74,4 +131,9 @@ function showHearts() {
   }
   
   heartAnimation();
+}
+
+window.onload = function ()
+{
+    container.getAnimations()[0].pause();
 }

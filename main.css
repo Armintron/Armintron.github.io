@@ -63,7 +63,7 @@
   margin-top:15px;
 }
 
-#submitButton{
+.myButtons{
   margin:auto;
   font-size:40px;
   border-radius:10px;
@@ -73,11 +73,11 @@
   transition: visibility 0s, opacity 3s linear;
 }
 
-#submitButton:hover:active{
+.myButtons:hover:active{
   background-color: #5c615e49;
 }
 
-#submitButton:hover:not(active){
+.myButtons:hover:not(active){
   background-color: white;
 }
 
@@ -146,7 +146,7 @@
 {
   width: 800px;
   height: 800px;
-  animation: 59s cubic-bezier(0,1.08,0,1.12) 3s infinite both running graphic, fadeInAnimation 1s;
+  animation: 50s cubic-bezier(0,1.08,0,1.12) 3s 1 both running graphic, fadeInAnimation 1s;
   border-radius: 15px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -158,22 +158,20 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  cursor: pointer
 }
 
 @keyframes graphic {
   0%     { background-image: url( "usHike.png" )  }
-  9%    { background-image: url( "usThirdDate.png"   )  }
-  18%   { background-image: url( "herGrabbing.png" )  }
-  27%   { background-image: url( "usLowerSprings.png" )  }
-  36%   { background-image: url( "usSternGrove.png" )  }
-  45%   { background-image: url( "usCamping.png" )  }
-  54%   { background-image: url( "usByRiver.png" )  }
-  63%   { background-image: url( "usChristmas.png" )  }
-  72%   { background-image: url( "usCats.png" )  }
-  81%   { background-image: url( "usPolaroid.png" )  }
-  90%   { background-image: url( "usMonkeyRock.png" )  }
-  100%   { background-image: url( "usHike.png" )  }
+  10%    { background-image: url( "usThirdDate.png"   )  }
+  20%   { background-image: url( "herGrabbing.png" )  }
+  30%   { background-image: url( "usLowerSprings.png" )  }
+  40%   { background-image: url( "usSternGrove.png" )  }
+  50%   { background-image: url( "usCamping.png" )  }
+  60%   { background-image: url( "usByRiver.png" )  }
+  70%   { background-image: url( "usChristmas.png" )  }
+  80%   { background-image: url( "usCats.png" )  }
+  90%   { background-image: url( "usPolaroid.png" )  }
+  100%   { background-image: url( "usMonkeyRock.png" )  }
 }
 
 .effect-text {
@@ -228,5 +226,5 @@
 /*Preload images*/
 body::after{
    position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
-   content:url(usHike.png) url(usThirdDate.png) url(herGrabbing.png) url(usLowerSprings.png) url(usSternGrove.png) url(usCamping.png) url(usByRiver.png) url(usChristmas.png) url(usCats.png) url(usPolaroid.png) url(usMonkeyRock.png) ;
+   content:url(usHike.png) url(usThirdDate.png) url(herGrabbing.png) url(usLowerSprings.png) url(usSternGrove.png) url(usCamping.png) url(usByRiver.png) url(usChristmas.png) url(usCats.png) url(usPolaroid.png) url(usMonkeyRock.png) url(FirstOne.m4a);
 }
