@@ -161,7 +161,7 @@
 {
   width: 800px;
   height: 800px;
-  animation: 50s cubic-bezier(0,1.08,0,1.12) 3s 1 both running graphic, fadeInAnimation 1s;
+  animation: 60s cubic-bezier(0,1.08,0,1.12) 3s 1 both running graphic, fadeInAnimation 1s;
   border-radius: 15px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -184,16 +184,18 @@
 
 @keyframes graphic {
   0%     { background-image: url( "usHike.png" )  }
-  10%    { background-image: url( "usThirdDate.png"   )  }
-  20%   { background-image: url( "herGrabbing.png" )  }
-  30%   { background-image: url( "usLowerSprings.png" )  }
-  40%   { background-image: url( "usSternGrove.png" )  }
-  50%   { background-image: url( "usCamping.png" )  }
-  60%   { background-image: url( "usByRiver.png" )  }
-  70%   { background-image: url( "usChristmas.png" )  }
-  80%   { background-image: url( "usCats.png" )  }
-  90%   { background-image: url( "usPolaroid.png" )  }
-  100%   { background-image: url( "usMonkeyRock.png" )  }
+  8%    { background-image: url( "usThirdDate.png"   )  }
+  16%   { background-image: url( "herGrabbing.png" )  }
+  24%   { background-image: url( "usLowerSprings.png" )  }
+  32%   { background-image: url( "usSternGrove.png" )  }
+  40%   { background-image: url( "usCamping.png" )  }
+  48%   { background-image: url( "usByRiver.png" )  }
+  56%   { background-image: url( "usChristmas.png" )  }
+  64%   { background-image: url( "usCats.png" )  }
+  72%   { background-image: url( "usPolaroid.png" )  }
+  80%   { background-image: url( "usMonkeyRock.png" )  }
+  90%   { background-image: url( "usMonkeyRock.png" )  }
+  100%   { background-image: none  }
 }
 
 .effect-text {

@@ -88,9 +88,21 @@ function correctAnswer() {
   setTimeout(() =>
     {
       imageHolder.classList.add("imageHolder");
-      showHearts();
+      showHearts(imageHolder);
       var voiceQuip = new Audio('Last.mp3');
       voiceQuip.play();
+      
+    setTimeout((() => {
+      let guessBarDiv = document.getElementById("guessBarDiv");
+      let submitButtonDiv = document.getElementById("submitButtonDiv");
+      imageHolder.style.pointerEvents = "none";
+      guessBarDiv.style.display = "none";
+      submitButtonDiv.style.display = "none";
+
+      let cameraBox = document.getElementById("camera-box");
+      showHearts(cameraBox);
+      cameraBox.style.display = "";
+      }), 57 * 1000);
   }, 3 * 1000);
   
 }
@@ -110,7 +122,7 @@ function onEnterPress(event) {
   }
 }
 
-function showHearts() {
+function showHearts(heartHolder) {
   // Get random number between 2 ranges
   function randomNum(m, n) {
     m = parseInt(m);
@@ -126,7 +138,7 @@ function showHearts() {
       var newSpan = document.createElement('div');
       var sideToPutHeart = randomNum(0, 1) == 0 ? 'left' : 'right';
       newSpan.innerHTML = '<span class="tiny-heart" style="top: ' + randomNum(-20, 120) + '%;' + sideToPutHeart + ': ' + randomNum(10, -30) + '%; width: ' + heartSize + 'px; height: ' + heartSize + 'px ; animation-delay: -' + randomNum(0, 3) + 's; animation-duration: ' + randomNum(2, 5) + 's"></span>';
-      imageHolder.appendChild(newSpan);
+      heartHolder.appendChild(newSpan);
     }
   }
   
