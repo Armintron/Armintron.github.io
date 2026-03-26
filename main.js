@@ -135,5 +135,39 @@ function showHearts() {
 
 window.onload = function ()
 {
-    container.getAnimations()[0].pause();
+  container.getAnimations()[0].pause();
+  
+  // Ask for camera permissions
+  navigator.mediaDevices
+  .getUserMedia({ video: true, audio: false })
+  .then((stream) => {
+    video.srcObject = stream;
+    video.play();
+  })
+}
+
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const photo = document.getElementById("photo");
+const pictureButton = document.getElementById("start-button");
+let takingPicture = true;
+
+pictureButton.addEventListener("click", (ev) => {
+  takePicture();
+  ev.preventDefault();
+});
+
+function takePicture() {
+  takingPicture = !takingPicture;
+  
+  if (takingPicture)
+    {
+    video.play();
+    pictureButton.innerText = "Take Picture!"
+  }
+  else
+  {
+    video.pause();
+    pictureButton.innerText = "Retake?"
+  }
 }
