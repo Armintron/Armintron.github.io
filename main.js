@@ -17,7 +17,7 @@ setInterval(function updateTimer() {
 
   timerSeconds += 1;
   
-  const secsInMin = 5;
+  const secsInMin = 60;
   if (timerSeconds == 3 * secsInMin)
   {
     var voiceQuip = new Audio('First.mp3');
